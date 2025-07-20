@@ -8,4 +8,4 @@ jobs:
     steps:
       - name: Event name
         run: |
-          echo "Event name: ${{ github.event_name }}"
+          echo "Event name used: ${{ github.event_name }}"
