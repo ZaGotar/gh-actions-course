@@ -4,8 +4,7 @@ on: push
 
 jobs:
   echo:
-    runs-on: ubuntu-later
+    runs-on: ubuntu-latest
     steps:
-      - name: Event name
-        run: |
-          echo "Event name used: ${{ github.event_name }}"
+      - name: Show the trigger
+        run: echo "I've been triggered by a(n) ${{ github.event_name }} event"
