@@ -8,7 +8,7 @@ jobs:
     name: ${{ matrix.os }}-${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: true      # if true, whenever any job fails, all the other jobs will be interrupted      
+      fail-fast: false      # if true, whenever any job fails, all the other jobs will be interrupted      
       matrix:
         node-version: [18.x, 20.x, 21.x]
         os:
