@@ -8,12 +8,16 @@ jobs:
     name: ${{ matrix.os }}-${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false      # if true, whenever any job fails, all the other jobs will be interrupted
+      fail-fast: false      # if true, whenever any job fails, all the other jobs will be interrupted      
       matrix:
         node-version: [18.x, 20.x, 21.x]
         os:
           - ubuntu-latest
           - windows-latest
+        # This keyword allows to extend the configuration. It targets to a more specific version
+        include:
+          - os: ubuntu-latest
+            node-version: 16.x
     steps:
       - name: Setup node
         uses: actions/setup-node@v3
@@ -21,9 +25,3 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Perform some tests
         run: echo "Running tests on OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
-
-        include:
-          - os: ubuntu-latest
-            tag: experimental
-          - os: ubuntu-latest
-            node-version: 16.x       
